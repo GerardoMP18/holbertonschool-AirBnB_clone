@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""First user"""
+"""creating class user"""
+from models.base_model import BaseModel
 
 
 class User(BaseModel):
