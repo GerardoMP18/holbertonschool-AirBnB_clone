@@ -12,7 +12,6 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 import json
-import models
 
 
 class HBNBCommand(cmd.Cmd):
@@ -67,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 2:
             print("** instance id missing **")
         else:
-            id_instance = models.storage.all()
+            id_instance = storage.all()
             string = "{}.{}".format(args[0], args[1])
             if string not in id_instance:
                 print("** no instance found **")
@@ -85,13 +84,59 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 2:
             print("** instance id missing **")
         else:
-            id_instance = models.storage.all()
+            id_instance = storage.all()
             string = "{}.{}".format(args[0], args[1])
             if string not in id_instance:
                 print("** no instance found **")
             else:
                 del (id_instance[string])
-                models.storage.save()
+                storage.save()
+
+    def do_all(self, arg):
+        """
+        Function that prints all string representations
+        of all instances based or not on class name
+        """
+        list = []
+        all_directory = storage.all()
+        if arg == "":
+            for keys, values in all_directory.items():
+                list.append(str(values))
+            print(list)
+        elif arg in self.__classes:
+            for keys, values in all_directory.items():
+                if values.__class__.__name__ == arg:
+                    list.append(str(values))
+            print(list)
+        else:
+            print("** class doesn't exist **")
+
+    def do_update(self, arg):
+        """
+        Function to update an instance based on class name and
+        id by adding or updating the attribute that saves the
+        change in the json file
+        """
+        args = arg.split(" ")
+        if arg == '':
+            print("** class name missing **")
+        elif args[0] not in self.__classes:
+            print("** class doesn't exist **")
+        elif len(args) == 1:
+            print("** instance id missing **")
+        else:
+            id_instance = storage.all()
+            string = "{}.{}".format(args[0], args[1])
+            if string not in id_instance:
+                print("** no instance found **")
+            elif len(args) == 2:
+                print("** attribute name missing **")
+            elif len(args) == 3:
+                print("** value missing **")
+            else:
+                setattr(id_instance[string], args[2], eval(args[3]))
+                storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
