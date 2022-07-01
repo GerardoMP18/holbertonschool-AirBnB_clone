@@ -5,6 +5,7 @@ from models.base_model import BaseModel
 from models import storage
 import cmd
 import json
+import models
 
 
 class HBNBCommand(cmd.Cmd):
@@ -58,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         pass
 
-    def do_quit(self, arg): 
+    def do_quit(self, arg):
         raise SystemExit
 
     def do_EOF(self, arg):
@@ -66,9 +67,24 @@ class HBNBCommand(cmd.Cmd):
 
     def help_quit(self):
         print("Quit command used to exit the program")
+        print()
 
     def help_EOF(self):
         print("EOF command used to exit the program")
 
-if __name__ == '__main__':
-    HBNBCommand().cmdloop()
+    def do_create(self, arg):
+        """
+        Function that is responsible for creating a new instance
+        based on the class and saves it in a json file and prints
+        the ID"""
+        if arg == "":
+            print("** class name missing **")
+        elif arg not in self.__classes:
+            print("** class doesn't exist **")
+        else:
+            new_create = eval(arg)()
+            new_create.save()
+            print(new_create.id)
+
+    if __name__ == '__main__':
+        HBNBCommand().cmdloop()
