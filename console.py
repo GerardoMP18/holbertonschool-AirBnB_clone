@@ -134,8 +134,11 @@ class HBNBCommand(cmd.Cmd):
             elif len(args) == 3:
                 print("** value missing **")
             else:
-                setattr(id_instance[string], args[2], eval(args[3]))
-                storage.save()
+                unmodifiable = ["id", "created_at", "updated_at"]
+                if args[2] not in unmodifiable:
+                    for key, value in id_instance.items():
+                        setattr(value, args[2], eval(args[3]))
+                        value.save()
 
 
 if __name__ == '__main__':
