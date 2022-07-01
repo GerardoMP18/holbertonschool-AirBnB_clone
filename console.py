@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """creating the command interpreter"""
 
+
+import cmd
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -9,7 +11,6 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-import cmd
 import json
 import models
 
@@ -56,7 +57,8 @@ class HBNBCommand(cmd.Cmd):
             print(new_create.id)
 
     def do_show(self, arg):
-        """Prints the string representation of an instance based on the class name and id"""
+        """Prints the string representation of an
+        instance based on the class name and id"""
         args = arg.split(" ")
         if arg == '':
             print("** class name missing **")
@@ -91,5 +93,5 @@ class HBNBCommand(cmd.Cmd):
                 del (id_instance[string])
                 models.storage.save()
 
-    if __name__ == '__main__':
-        HBNBCommand().cmdloop()
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
