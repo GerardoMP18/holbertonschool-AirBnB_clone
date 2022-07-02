@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import unittest
 from models.base_model import BaseModel
-import models
 from datetime import datetime
 """
 Unittest for class Base Model
