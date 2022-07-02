@@ -80,3 +80,41 @@ class TestBase_model(unittest.TestCase):
         base8.id = "2d09fbee-82be-4531-852f-2add6d6e4f23"
         result = "[BaseModel] (2d09fbee-82be-4531-852f-2add6d6e4f23)"
         self.assertTrue(result, base8.__str__)
+
+    def test_creation_new_instance(self):
+        """
+        Test to validate that the attribute is equal to the input
+        """
+        base9 = BaseModel()
+        base9.name = "gerardo"
+        base9.my_number = 89
+        base9.save()
+        self.assertEqual(base9.name, "gerardo")
+        self.assertEqual(base9.my_number, 89)
+
+    def test_creation_update_diferent(self):
+        """
+        Test to validate that the creation of the date is
+        different in different instances.
+        """
+        base10 = BaseModel()
+        base10.name = "Dhana"
+        base10.my_number = 20
+        base10.save()
+        base11 = BaseModel()
+        base11.name = "Ghueral"
+        base11.my_number = 14
+        base11.save()
+        self.assertNotEqual(base10.created_at, base11.created_at)
+        self.assertNotEqual(base10.updated_at, base11.updated_at)
+
+    def test_to_dict(self):
+        """
+        Test to validate that the key is in the instance.
+        """
+        base12 = BaseModel()
+        dictionary_value = base12.to_dict()
+        self.assertIn('__class__', dictionary_value)
+        self.assertIn('created_at', dictionary_value)
+        self.assertIn('updated_at', dictionary_value)
+        self.assertIn('id', dictionary_value)
