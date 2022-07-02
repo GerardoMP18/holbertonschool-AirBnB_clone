@@ -118,3 +118,27 @@ class TestBase_model(unittest.TestCase):
         self.assertIn('created_at', dictionary_value)
         self.assertIn('updated_at', dictionary_value)
         self.assertIn('id', dictionary_value)
+
+    def test_kwargs(self):
+        """
+        Test kwarg by passing the keywords
+        """
+        dictionary_json = {'id': '33448c92-6b9d-4f56-8b27-d8a4a0e9be72',
+                           'created_at': '2022-07-02T10:46:04.535249',
+                           'updated_at': '2022-07-02T10:46:04.535517',
+                           'name': 'My First Model',
+                           'my_number': 89,
+                           '__class__': 'BaseModel'}
+        base13 = BaseModel(**dictionary_json)
+        nameclass = base13.__class__.__name__
+        format_date = '\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}.\\d{6}'
+        self.assertEqual(nameclass, "BaseModel")
+        self.assertEqual(len(base13.id), 36)
+        self.assertNotEqual(base13.id, None)
+        self.assertIsInstance(base13.id, str)
+        self.assertIsInstance(base13.created_at, datetime)
+        self.assertIsInstance(base13.updated_at, datetime)
+        self.assertRegex(str(base13.created_at), format_date)
+        self.assertRegex(str(base13.updated_at), format_date)
+        self.assertEqual(base13.name, 'My First Model')
+        self.assertEqual(base13.my_number, 89)
