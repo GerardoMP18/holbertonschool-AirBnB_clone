@@ -37,9 +37,9 @@ class TestAmenity(unittest.TestCase):
         """
         amenity4 = Amenity()
         dictionary = amenity4.__dict__
-        format_representation = "[{}] ({}) {}".format(amenity4.__class__.__name__,
-                                                      amenity4.id, dictionary)
-        self.assertEqual(format_representation, str(amenity4))    
+        format_representation = "[{}] ({}) {}".format(
+                amenity4.__class__.__name__, amenity4.id, dictionary)
+        self.assertEqual(format_representation, str(amenity4))
 
     def test_create_Amenity(self):
         """

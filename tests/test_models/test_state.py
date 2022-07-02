@@ -37,8 +37,8 @@ class TestState(unittest.TestCase):
         """
         state4 = State()
         dictionary = state4.__dict__
-        format_representation = "[{}] ({}) {}".format(state4.__class__.__name__,
-                                                      state4.id, dictionary)
+        format_representation = "[{}] ({}) {}".format(
+                state4.__class__.__name__, state4.id, dictionary)
         self.assertEqual(format_representation, str(state4))
 
     def test_create_State(self):
