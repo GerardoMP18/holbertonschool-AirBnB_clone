@@ -142,3 +142,18 @@ class TestBase_model(unittest.TestCase):
         self.assertRegex(str(base13.updated_at), format_date)
         self.assertEqual(base13.name, 'My First Model')
         self.assertEqual(base13.my_number, 89)
+
+    def test_update_basemodel(self):
+        """
+        Test to validate the update change that in the date and value
+        """
+        base14 = BaseModel()
+        base14.name = "gerardo"
+        first = base14.my_number = 974133101
+        first_date = base14.updated_at
+        base14.save()
+        second = base14.my_number = 943136201
+        second_date = base14.updated_at
+        base14.save()
+        self.assertNotEqual(first, second)
+        self.assertNotEqual(first_date, second_date)
