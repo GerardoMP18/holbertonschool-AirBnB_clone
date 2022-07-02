@@ -68,8 +68,8 @@ class TestUser(unittest.TestCase):
         """
         user6 = User()
         user6.email = "dhannaps03@gmail.com"
-        user6.password = "987654"
-        first = user6.first_name = "Dhanna"
+        first = user6.password = "987654"
+        user6.first_name = "Dhanna"
         user6.last_name = "Palomino"
         first_date = user6.updated_at
         user6.save()
