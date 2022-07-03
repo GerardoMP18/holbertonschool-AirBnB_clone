@@ -140,6 +140,19 @@ class HBNBCommand(cmd.Cmd):
                         setattr(value, args[2], eval(args[3]))
                         value.save()
 
+    def do_count(self, arg):
+        """Instance counter according to class"""
+        args = arg.split(" ")
+        if arg not in self.__classes:
+            print("** class doesn't exist **")
+        else:
+            list_new = []
+            list_dictionary = storage.all()
+            for key, value in list_dictionary.items():
+                if args[0] in key:
+                    list_new.append(value)
+            print(len(list_new))
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
