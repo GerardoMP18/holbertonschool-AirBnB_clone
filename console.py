@@ -23,7 +23,6 @@ class HBNBCommand(cmd.Cmd):
     __classes = [
         'BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review'
         ]
-    __commands = ['all', 'count', 'create', 'destroy', 'show']
 
     def emptyline(self):
         pass
@@ -152,6 +151,17 @@ class HBNBCommand(cmd.Cmd):
                 if args[0] in key:
                     list_new.append(value)
             print(len(list_new))
+
+    def default(self, arg):
+        """
+        cmd method to validate when it does not
+        recognize the prefix of the command.
+        """
+        args = arg.split(".")
+        if args[0] in self.__classes:
+            if args[1] == "all()":
+                nameClass = args[0]
+                return self.do_all(nameClass)
 
 
 if __name__ == '__main__':
