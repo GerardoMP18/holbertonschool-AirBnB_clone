@@ -174,6 +174,9 @@ class HBNBCommand(cmd.Cmd):
             elif args[1][0:7] == 'destroy':
                 arguments = args[0] + " " + new_separator[0]
                 return self.do_destroy(arguments)
+            elif args[1][0:6] == "update":
+                arguments = args[0] + " " + new[0] + "" + new[1] + "" + new[2]
+                return self.do_update(arguments)
 
 
 if __name__ == '__main__':
