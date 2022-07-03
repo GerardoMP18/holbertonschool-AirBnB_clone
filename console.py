@@ -160,6 +160,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split(".")
         separator = args[1].split("(")
         new_separator = separator[1].split(")")
+        new = new_separator[0].split(",")
         if args[0] in self.__classes:
             if args[1] == "all()":
                 nameClass = args[0]
@@ -170,6 +171,9 @@ class HBNBCommand(cmd.Cmd):
             elif args[1][0:4] == 'show':
                 arguments = args[0] + " " + new_separator[0]
                 return self.do_show(arguments)
+            elif args[1][0:7] == 'destroy':
+                arguments = args[0] + " " + new_separator[0]
+                return self.do_destroy(arguments)
 
 
 if __name__ == '__main__':
