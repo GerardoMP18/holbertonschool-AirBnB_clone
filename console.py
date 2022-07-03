@@ -43,7 +43,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """
-        Function that is responsible for creating a new instance
+        Methods that is responsible for creating a new instance
         based on the class and saves it in a json file and prints
         the ID"""
         if arg == "":
@@ -74,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
                 print("{}".format(id_instance[string]))
 
     def do_destroy(self, arg):
-        """Function that removes an instance based on class
+        """removes an instance based on class
            name, ID and saves it to a json file"""
         args = arg.split(" ")
         if arg == '':
@@ -94,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """
-        Function that prints all string representations
+        methods that prints all string representations
         of all instances based or not on class name
         """
         list = []
@@ -113,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """
-        Function to update an instance based on class name and
+        methods to update an instance based on class name and
         id by adding or updating the attribute that saves the
         change in the json file
         """
