@@ -162,6 +162,9 @@ class HBNBCommand(cmd.Cmd):
             if args[1] == "all()":
                 nameClass = args[0]
                 return self.do_all(nameClass)
+            elif args[1] == "count()":
+                nameClass = args[0]
+                return self.do_count(nameClass)
 
 
 if __name__ == '__main__':
