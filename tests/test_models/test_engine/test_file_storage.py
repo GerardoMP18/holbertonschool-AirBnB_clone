@@ -139,3 +139,17 @@ class TestFileStorage(unittest.TestCase):
             stringReview = "{}.{}".format(review1.__class__.__name__,
                                           review1.id)
             self.assertIn(stringReview, readFileReview)
+
+    def test_reload(self):
+        """
+        Test to validate the reload
+        """
+        self.assertEqual(models.storage.reload(), None)
+        models.storage.save()
+        models.storage.reload()
+        self.new = BaseModel()
+        all_objs = models.storage.all()
+        for obj_id in all_objs.keys():
+            obj = all_objs[obj_id]
+        self.assertEqual(self.new.to_dict()['id'], obj.to_dict()['id'])
+        self.assertTrue(os.path.exists('file.json'))

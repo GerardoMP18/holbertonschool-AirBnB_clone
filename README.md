@@ -12,14 +12,15 @@ The console have many functions, that are:
 - Create a new object
 - Show an object
 - Update an object's attributes
-- destroy an object
+- Destroy an object
 
 # Installation
 ```
 git clone git@github.com:GerardoMP18/holbertonschool-AirBnB_clone.git
 cd holbertonschool-AirBnB_clone
 ```
-How can we use the interpreter?
+# How can we use the interpreter?
+Executing the console in a `interactive` mode:
 ```
 $ ./console.py
 (hbnb) help
@@ -29,12 +30,32 @@ Documented commands (type help <topic>):
 EOF  help  quit
 
 (hbnb) 
-(hbnb) create
-(hbnb) ** class name missing **
 (hbnb) quit
 $
 ```
-## Using the create, show, update and destroy functions:
+And also in `non-interactive` mode:
+```
+$ echo "help" | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
+```
+Using the `create`, `show`, `update` and `destroy` functions:
 ```
 $ ./console.py
 (hbnb)
@@ -47,7 +68,8 @@ $ ./console.py
 ** class doesn't exist **
 (hbnb) show BaseModel 0aeb0145-807f-4b39-8111-c793d8af36d5
 [BaseModel] (0aeb0145-807f-4b39-8111-c793d8af36d5) {'id': '0aeb0145-807f-4b39-8111-c793d8af36d5',
-'created_at': datetime.datetime(2022, 7, 3, 0, 1, 12, 264613), 'updated_at': datetime.datetime(2022, 7, 3, 0, 1, 12, 264637)}
+'created_at': datetime.datetime(2022, 7, 3, 0, 1, 12, 264613), 
+'updated_at': datetime.datetime(2022, 7, 3, 0, 1, 12, 264637)}
 (hbnb) update BaseModel
 ** instance id missing **
 (hbnb) update BaseModel 5b63ffeb-3630-42fe-bfc4-e446a36da937 AirIsfun "NoTooMuch"

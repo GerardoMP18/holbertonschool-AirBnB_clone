@@ -19,7 +19,7 @@ class TestPlace(unittest.TestCase):
         self.assertIsInstance(place1.name, str)
         self.assertIsInstance(place1.description, str)
         self.assertIsInstance(place1.number_rooms, int)
-        self.assertIsInstance(place1.numbers_bathrooms, int)
+        self.assertIsInstance(place1.number_bathrooms, int)
         self.assertIsInstance(place1.max_guest, int)
         self.assertIsInstance(place1.price_by_night, int)
         self.assertIsInstance(place1.latitude, float)
@@ -44,7 +44,7 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(place3.name, "")
         self.assertEqual(place3.description, "")
         self.assertEqual(place3.number_rooms, 0)
-        self.assertEqual(place3.numbers_bathrooms, 0)
+        self.assertEqual(place3.number_bathrooms, 0)
         self.assertEqual(place3.max_guest, 0)
         self.assertEqual(place3.price_by_night, 0)
         self.assertEqual(place3.latitude, 0.0)
@@ -71,7 +71,7 @@ class TestPlace(unittest.TestCase):
         place5.name = "Holberton"
         place5.description = "Innovative"
         place5.number_rooms = "4"
-        place5.numbers_bathrooms = "1"
+        place5.number_bathrooms = "1"
         place5.max_guest = "28"
         place5.price_by_night = "60"
         place5.latitude = "-33.870775"
@@ -83,7 +83,7 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(place5.name, "Holberton")
         self.assertEqual(place5.description, "Innovative")
         self.assertEqual(place5.number_rooms, "4")
-        self.assertEqual(place5.numbers_bathrooms, "1")
+        self.assertEqual(place5.number_bathrooms, "1")
         self.assertEqual(place5.max_guest, "28")
         self.assertEqual(place5.price_by_night, "60")
         self.assertEqual(place5.latitude, "-33.870775")
@@ -100,7 +100,7 @@ class TestPlace(unittest.TestCase):
         place6.name = "Huaral"
         first = place6.description = "Perfect"
         place6.number_rooms = "1"
-        place6.numbers_bathrooms = "1"
+        place6.number_bathrooms = "1"
         place6.max_guest = "6"
         place6.price_by_night = "40"
         place6.latitude = "-33.870775"

@@ -23,7 +23,6 @@ class HBNBCommand(cmd.Cmd):
     __classes = [
         'BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review'
         ]
-    __commands = ['all', 'count', 'create', 'destroy', 'show']
 
     def emptyline(self):
         pass
@@ -43,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """
-        Function that is responsible for creating a new instance
+        Methods that is responsible for creating a new instance
         based on the class and saves it in a json file and prints
         the ID"""
         if arg == "":
@@ -74,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
                 print("{}".format(id_instance[string]))
 
     def do_destroy(self, arg):
-        """Function that removes an instance based on class
+        """removes an instance based on class
            name, ID and saves it to a json file"""
         args = arg.split(" ")
         if arg == '':
@@ -94,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """
-        Function that prints all string representations
+        methods that prints all string representations
         of all instances based or not on class name
         """
         list = []
@@ -113,7 +112,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """
-        Function to update an instance based on class name and
+        methods to update an instance based on class name and
         id by adding or updating the attribute that saves the
         change in the json file
         """
@@ -152,6 +151,32 @@ class HBNBCommand(cmd.Cmd):
                 if args[0] in key:
                     list_new.append(value)
             print(len(list_new))
+
+    def default(self, arg):
+        """
+        cmd method to validate when it does not
+        recognize the prefix of the command.
+        """
+        args = arg.split(".")
+        separator = args[1].split("(")
+        new_separator = separator[1].split(")")
+        new = new_separator[0].split(",")
+        if args[0] in self.__classes:
+            if args[1] == "all()":
+                nameClass = args[0]
+                return self.do_all(nameClass)
+            elif args[1] == "count()":
+                nameClass = args[0]
+                return self.do_count(nameClass)
+            elif args[1][0:4] == 'show':
+                arguments = args[0] + " " + new_separator[0]
+                return self.do_show(arguments)
+            elif args[1][0:7] == 'destroy':
+                arguments = args[0] + " " + new_separator[0]
+                return self.do_destroy(arguments)
+            elif args[1][0:6] == "update":
+                arguments = args[0] + " " + new[0] + "" + new[1] + "" + new[2]
+                return self.do_update(arguments)
 
 
 if __name__ == '__main__':
